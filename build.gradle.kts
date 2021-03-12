@@ -4,6 +4,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
+val jda_version: String by project
+val lavaplayer_version: String by project
 
 plugins {
     application
@@ -18,6 +20,7 @@ application {
 
 repositories {
     mavenLocal()
+    mavenCentral()
     jcenter()
     maven { url = uri("https://kotlin.bintray.com/ktor") }
 }
@@ -26,5 +29,24 @@ dependencies {
     implementation("io.ktor:ktor-server-core:$ktor_version")
     implementation("io.ktor:ktor-server-netty:$ktor_version")
     implementation("ch.qos.logback:logback-classic:$logback_version")
+    implementation("net.dv8tion:JDA:$jda_version")
+    implementation("com.sedmelluq:lavaplayer:$lavaplayer_version")
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
+}
+
+tasks {
+    compileKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+    compileTestKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+    jar {
+        manifest {
+            attributes["Main-Class"] = "jp.brusssh.discord.bot.ApplicationKt"
+        }
+        from(configurations.compileClasspath.get().filter { !it.name.endsWith("pom") }.map { if (it.isDirectory) it else zipTree(it) })
+
+        exclude("META-INF/*.RSA", "META-INF/*.SF", "META-INF/*.DSA")
+    }
 }
