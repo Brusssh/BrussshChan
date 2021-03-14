@@ -5,7 +5,7 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.server.testing.handleRequest
 import io.ktor.server.testing.withTestApplication
 import junit.framework.TestCase.assertEquals
-import org.junit.Test
+import kotlin.test.Test
 
 class ApplicationTest {
     @Test
