@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.dsl.Coroutines
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
 val ktor_version: String by project
@@ -14,6 +12,7 @@ plugins {
     application
     kotlin("jvm") version "1.4.10"
     jacoco
+    id("org.jlleitschuh.gradle.ktlint") version "9.4.1"
 }
 
 group = "jp.brusssh.discord.bot"
