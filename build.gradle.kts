@@ -1,5 +1,6 @@
 import org.jetbrains.kotlin.gradle.dsl.Coroutines
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
 val ktor_version: String by project
 val kotlin_version: String by project
@@ -11,6 +12,7 @@ val junit_version: String by project
 plugins {
     application
     kotlin("jvm") version "1.4.10"
+    jacoco
 }
 
 group = "jp.brusssh.discord.bot"
@@ -55,6 +57,21 @@ tasks {
         exclude("META-INF/*.RSA", "META-INF/*.SF", "META-INF/*.DSA")
     }
     test {
-        useJUnitPlatform()
+        finalizedBy(jacocoTestReport)
+        useJUnitPlatform {
+            includeEngines("junit-jupiter")
+        }
+
+        testLogging {
+            exceptionFormat = TestExceptionFormat.FULL
+            events("passed", "failed", "skipped")
+        }
+    }
+    jacocoTestReport {
+        reports {
+            xml.isEnabled = true
+            csv.isEnabled = true
+            html.isEnabled = true
+        }
     }
 }
