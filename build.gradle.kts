@@ -12,7 +12,8 @@ plugins {
     application
     kotlin("jvm") version "1.4.10"
     jacoco
-    id("org.jlleitschuh.gradle.ktlint") version "9.4.1"
+    id("org.jlleitschuh.gradle.ktlint") version "10.0.0"
+    id("org.jlleitschuh.gradle.ktlint-idea") version "10.0.0"
 }
 
 group = "jp.brusssh.discord.bot"

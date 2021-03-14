@@ -4,9 +4,9 @@ import com.google.gson.Gson
 import java.io.File
 import java.nio.charset.Charset
 
-data class Config(val webPort: Int, val discordToken: String ) {
+data class Config(val webPort: Int, val discordToken: String) {
     companion object {
-        private val config: Config = parseConfig("config.json");
+        private val config: Config = parseConfig("config.json")
 
         fun get(): Config {
             return config
