@@ -6,8 +6,9 @@ import io.ktor.application.*
 import io.ktor.response.*
 import io.ktor.request.*
 
-fun main(args: Array<String>): Unit =
+fun main(args: Array<String>) {
     io.ktor.server.netty.EngineMain.main(args)
+}
 
 /**
  * Please note that you can use any other name instead of *module*.

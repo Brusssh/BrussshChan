@@ -8,6 +8,7 @@ val logback_version: String by project
 val jda_version: String by project
 val lavaplayer_version: String by project
 val junit_version: String by project
+val gson_version: String by project
 
 plugins {
     application
@@ -34,6 +35,7 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("net.dv8tion:JDA:$jda_version")
     implementation("com.sedmelluq:lavaplayer:$lavaplayer_version")
+    implementation("com.google.code.gson:gson:$gson_version")
     testImplementation("org.junit.jupiter:junit-jupiter:$junit_version")
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
     testImplementation(kotlin("test-junit5"))
